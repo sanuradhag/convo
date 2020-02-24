@@ -1,0 +1,30 @@
+.finish {
+  background-color: white;
+  height: 450px;
+  min-height: 450px;
+
+  .generator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    .submit-btn {
+      background-color: #F25276;
+      color: white;
+      font-size: 18px;
+      height: 40px;
+      width: 250px;
+      border-radius: 25px;
+      border: none;
+
+      &:hover {
+        background-color: #282c34;
+        box-shadow: 0 0 10px 1px #F25276;
+      }
+    }
+  }
+
+  .results {
+
+  }
+}

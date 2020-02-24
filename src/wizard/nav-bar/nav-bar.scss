@@ -1,0 +1,40 @@
+.nav-bar {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10px;
+
+  .nav-item {
+    background: rgba(255, 85, 115, 0.74);
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 0 16px 4px #888888;
+    }
+
+    &.active {
+      width: 60px;
+      height: 60px;
+      background: #F25276;
+      border: 5px solid #c94b64;
+      .text {
+        margin-top: 20px;
+        display: inline-block;
+        font-size: 18px;
+        color: white;
+      }
+    }
+
+    .text {
+      margin-top: 15px;
+      display: inline-block;
+      font-size: 18px;
+      color: white;
+    }
+  }
+}

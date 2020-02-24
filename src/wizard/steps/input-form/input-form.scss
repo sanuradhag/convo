@@ -1,0 +1,61 @@
+.input-form {
+  margin: 10px 10px 10px 10px;
+  background-color:white;
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .messages {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    font-size: 20px;
+    text-align: center;
+    height: 400px;
+
+    .success {
+      color: green;
+    }
+
+    .failed {
+      color: red;
+    }
+  }
+
+  .drop-zone {
+    display: flex;
+    background-color: white;
+    text-align: center;
+    margin: 0 auto;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+
+    .wrapper {
+      border: black dotted;
+      height: 300px;
+      width: 500px;
+      margin: 10px auto 0;
+      padding-top: 10px;
+
+      .text {
+        font-size: 20px;
+        padding-top: 100px;
+      }
+
+      .json {
+        width: 40px;
+      }
+    }
+  }
+
+}

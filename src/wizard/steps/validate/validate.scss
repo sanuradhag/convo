@@ -1,0 +1,36 @@
+.validate {
+  background-color: white;
+  min-height: 450px;
+
+  .spinner {
+    padding-top: 100px;
+
+    .text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+
+  .messages {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    font-size: 20px;
+    text-align: center;
+    height: 400px;
+
+    .success {
+      color: green;
+    }
+
+    .failed {
+      color: red;
+    }
+  }
+}
