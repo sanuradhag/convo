@@ -7,6 +7,8 @@ import Edit from "./steps/edit/Edit";
 import Finish from "./steps/finish/Finish";
 
 import "./wizard.scss"
+import Header from "../header/Header";
+import Footer from "../footer/Footer";
 
 interface State {
     currentStep: number,
@@ -14,6 +16,7 @@ interface State {
     steps: Step[];
     specFile: File | null;
     specJSON: string;
+    visitedSteps: number[]
 }
 
 export interface Step {
@@ -56,7 +59,8 @@ class Wizard extends React.Component<any, State> {
             valid: true,
             steps: this.steps,
             specFile: null,
-            specJSON: ""
+            specJSON: "",
+            visitedSteps: [1]
         }
 
     }
@@ -71,16 +75,19 @@ class Wizard extends React.Component<any, State> {
     };
 
     handleNavigation = (step: number) => {
-        const {steps } = this.state;
+        const {steps, visitedSteps } = this.state;
         const component =  steps.find((st:Step) => st.index === step);
-
         if(component && step === 4) {
             component.component = <Finish file={this.state.specFile}/>
         }
 
+        visitedSteps.push(step);
+        const visited = visitedSteps;
+
         this.setState({
             currentStep: step,
-            valid: true
+            valid: true,
+            visitedSteps: visited
         });
     };
 
@@ -97,12 +104,13 @@ class Wizard extends React.Component<any, State> {
     }
 
     render () {
-        const {currentStep, valid, steps} = this.state;
+        const {currentStep, valid, steps, visitedSteps} = this.state;
      return(
          <div className={"wizard"}>
-
+            <Header/>
             <Navbar
                 steps={steps}
+                visitedSteps={visitedSteps}
                 currentStep={currentStep}
                 name={"2"}
                 onChange={this.handleNavigation}
@@ -116,6 +124,8 @@ class Wizard extends React.Component<any, State> {
                 valid={valid}
                 onChange={this.handleNavigation}
             />
+
+            <Footer/>
          </div>
      );
     }

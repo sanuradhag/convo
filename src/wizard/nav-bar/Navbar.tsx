@@ -11,7 +11,8 @@ interface Props {
     steps: Step[];
     currentStep: number;
     name: string;
-    onChange: Function
+    onChange: Function,
+    visitedSteps: number[]
 }
 
 
@@ -22,15 +23,20 @@ class Navbar extends React.Component<Props, State> {
       this.props.onChange(index);
     };
 
-    addClassName(step: number, currentStep: number) {
+    addActiveClassName(step: number, currentStep: number) {
         return step === currentStep ? "active nav-item": "nav-item"
+    }
+
+    addVisitedClassName(step: number) {
+        const {visitedSteps} = this.props;
+        return visitedSteps.includes(step) ? "": "not-visited"
     }
 
     renderSteps() {
         const {steps, currentStep} = this.props;
         return steps.map(step => (
             <div
-                className={this.addClassName(step.index, currentStep)}
+                className={`${this.addActiveClassName(step.index, currentStep)} ${this.addVisitedClassName(step.index)}`}
                 onClick={() => this.handleClick(step.index)}
                 key={step.index}
             >

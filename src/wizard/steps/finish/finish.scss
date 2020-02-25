@@ -1,7 +1,8 @@
 .finish {
   background-color: white;
-  height: 450px;
+  height: 400px;
   min-height: 450px;
+  margin: 10px 10px 10px 10px;
 
   .generator {
     display: flex;
@@ -24,7 +25,16 @@
     }
   }
 
+  .spinner {
+    padding-top: 150px;
+  }
+
   .results {
 
+    .react-json-view {
+      height: 450px;
+      overflow-y: scroll;
+      padding-left: 100px;
+    }
   }
 }

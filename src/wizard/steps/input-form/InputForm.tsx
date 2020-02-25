@@ -1,8 +1,6 @@
 import React from "react";
 import Dropzone from "react-dropzone";
 
-import AWS from "aws-sdk";
-
 import json from "../../../assets/json.svg"
 import "./input-form.scss"
 

@@ -1,16 +1,18 @@
 import React from "react";
 import "./finish.scss";
-import AWS from "aws-sdk";
+import ReactJson from 'react-json-view';
+
+import RestAPI from "../../../api/RestAPI"
 
 interface Props {
-    file: File | null
+    file: File | Blob | null
 }
 
 interface State {
-    generating: boolean;
-    generated: boolean;
+    loading: boolean,
     message: string,
-    success: boolean
+    success: boolean,
+    interactionModel: any
 }
 
 interface Response {
@@ -18,96 +20,98 @@ interface Response {
     err: any
 }
 
+
+
 class Finish extends React.Component<Props, State> {
 
     constructor(props: Props) {
         super(props);
         this.state = {
-            generating: false,
-            generated: false,
+            loading: false,
             message: "",
-            success: false
+            success: false,
+            interactionModel: null
         };
     }
 
     handleClick = () => {
+        debugger
         const { file } = this.props;
         if(file) {
-            // this.uploadFile(file, file.name, "api-doc").then((res: any) => {
-            //     if(res.data) {
-            //       console.log(res.data.Location);
-            //     }
-            // });
+            this.setState({
+                loading: true,
+            });
+            this.uploadFile(file)
         }
     };
 
-    uploadFile(file: File, fileName: string, logo_type: string) {
-        this.setState({
-            generating: true,
-        });
-
-
-        const albumPhotosKey = encodeURIComponent(logo_type) + "/";
-        const iconKey = albumPhotosKey + fileName;
-
-        // return new Promise(resolve => {
-        //     s3.upload(
-        //         {
-        //             Key: iconKey,
-        //             Body: file,
-        //             ACL: "public-read",
-        //             Bucket: "dev-test123"
-        //         },
-        //         (err, data) => {
-        //             let res: Response = {
-        //                 data: null,
-        //                 err: null
-        //             };
-        //
-        //             if (err) {
-        //                 res.err = err;
-        //                 this.setState({
-        //                     message: "An error occurred while uploading your file. Please try again",
-        //                     success: false,
-        //                     generated: true
-        //                 });
-        //             } else {
-        //                 res.data = data;
-        //                 this.setState({
-        //                     success: true,
-        //                     generated: true,
-        //                     generating: false
-        //                 });
-        //             }
-        //             resolve(res);
-        //         }
-        //     );
-        // });
+    uploadFile(file: File | Blob) {
+        RestAPI.uploadSpecFile(file)
+            .then(response => {
+                if(response.data) {
+                    setTimeout(() => {
+                        this.setState({
+                            success: true,
+                            interactionModel: response.data,
+                            loading: false
+                        });
+                    }, 2000);
+                }
+            })
+            .catch(err => {
+                this.setState({
+                    message: "An error occurred while uploading your file. Please try again",
+                    success: false,
+                    loading: false
+                });
+            });
     }
+
+    handleEdit = () => {
+
+    };
+
+    handleAdd = (e: any) => {
+
+    };
+
+    handleDelete = () => {
+
+    };
 
 
     render() {
-        const {generating, generated, message, success} = this.state;
+        const {loading, message, interactionModel} = this.state;
         return(
             <div className={"finish"}>
-                {  !generated &&
+                <p>{message}</p>
+                {  (!interactionModel && !loading)  &&
                     <div className={"generator"}>
-                        {!generating &&
                         <button className={"submit-btn"} onClick={this.handleClick}>
                             Generate Interaction Model
                         </button>
-                        }
-
-                        {
-                            generating && <div className={"loader"}/>
-                        }
-
-
                     </div>
                 }
 
-                {generated &&
-                    <div className={"results"}></div>
+                {
+                    loading &&
+                    <div className={"spinner"}>
+                        <div className={"loader"}/>
+                    </div>
+                }
+
+                {interactionModel &&
+                    <div className={"results"}>
+                        <ReactJson
+                            src={interactionModel}
+                            theme={'tomorrow'}
+                            name={false}
+                            enableClipboard={true}
+                            onEdit={this.handleEdit}
+                            onAdd={this.handleAdd}
+                            onDelete={this.handleDelete}
+                        />
+                    </div>
                 }
 
             </div>

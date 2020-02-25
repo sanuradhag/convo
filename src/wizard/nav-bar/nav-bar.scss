@@ -30,6 +30,10 @@
       }
     }
 
+    &.not-visited {
+      opacity: 0.2;
+    }
+
     .text {
       margin-top: 15px;
       display: inline-block;
