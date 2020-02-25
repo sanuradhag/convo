@@ -18,10 +18,3 @@ const AnimationText = () => {
 };
 
 export default AnimationText;
-
-{/*<div className={"animation-text"}>*/}
-{/*    <div className={"convo"}>CONVO</div>*/}
-{/*    <div className={"desc"}>*/}
-{/*        <span className={"text"}>We can make your product speak.</span>*/}
-{/*    </div>*/}
-{/*</div>*/}
