@@ -4,11 +4,12 @@ import ButtonBar from "./button-bar/ButtonBar";
 import InputForm from "./steps/input-form/InputForm";
 import Validate from "./steps/validate/Validate";
 import Edit from "./steps/edit/Edit";
-import Finish from "./steps/finish/Finish";
+import Generator from "./steps/generator/Generator";
 
 import "./wizard.scss"
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
+import View from "./steps/view/View";
 
 interface State {
     currentStep: number,
@@ -16,7 +17,8 @@ interface State {
     steps: Step[];
     specFile: File | null;
     specJSON: string;
-    visitedSteps: number[]
+    visitedSteps: number[],
+    interactionModel: any
 }
 
 export interface Step {
@@ -50,7 +52,12 @@ class Wizard extends React.Component<any, State> {
             {
                 index: 4,
                 name: "Generate interaction model",
-                component: <Finish file={null}/>
+                component: <Generator file={null} onGenerate={this.handleGeneration}/>
+            },
+            {
+                index: 5,
+                name: "View interaction model",
+                component: <View interactionModel={null}/>
             }
             ];
 
@@ -60,7 +67,8 @@ class Wizard extends React.Component<any, State> {
             steps: this.steps,
             specFile: null,
             specJSON: "",
-            visitedSteps: [1]
+            visitedSteps: [1],
+            interactionModel: null
         }
 
     }
@@ -74,11 +82,24 @@ class Wizard extends React.Component<any, State> {
         localStorage.setItem("spec", json);
     };
 
+    handleGeneration = (interactionModel: any) => {
+        debugger
+        this.setState({
+            interactionModel
+        })
+    };
+
     handleNavigation = (step: number) => {
         const {steps, visitedSteps } = this.state;
         const component =  steps.find((st:Step) => st.index === step);
+
+        debugger
         if(component && step === 4) {
-            component.component = <Finish file={this.state.specFile}/>
+            component.component = <Generator file={this.state.specFile} onGenerate={this.handleGeneration}/>
+        }
+
+        if(component && step === 5) {
+            component.component = <View interactionModel={this.state.interactionModel} />
         }
 
         visitedSteps.push(step);

@@ -3,7 +3,7 @@ import {
     Link
 } from "react-router-dom";
 
-import logo from '../assets/communication.svg';
+import logo from '../../assets/communication.svg';
 import './landing-page.scss'
 import AnimationText from "./AnimationText";
 

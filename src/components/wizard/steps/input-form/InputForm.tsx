@@ -1,7 +1,7 @@
 import React from "react";
 import Dropzone from "react-dropzone";
 
-import json from "../../../assets/json.svg"
+import json from "../../../../assets/json.svg"
 import "./input-form.scss"
 
 interface Props {

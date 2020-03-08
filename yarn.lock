@@ -8963,6 +8963,11 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
+react-accessible-accordion@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-accessible-accordion/-/react-accessible-accordion-3.0.1.tgz#8f3b08c712f4d5e526fad4c55c3d70fc3b68cbd5"
+  integrity sha512-2OZY6PWVOTYjVRQ5vnzVfvSRvapH1fYHNE6rG0S64cCatf+IOovokZEa4Xzmdl69ebrYO2HU3h8yLlEk9LqwPA==
+
 react-app-polyfill@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/react-app-polyfill/-/react-app-polyfill-1.0.6.tgz#890f8d7f2842ce6073f030b117de9130a5f385f0"
@@ -8984,6 +8989,11 @@ react-base16-styling@^0.6.0:
     lodash.curry "^4.0.1"
     lodash.flow "^3.3.0"
     pure-color "^1.2.0"
+
+react-collapsible@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/react-collapsible/-/react-collapsible-2.7.0.tgz#d95111bfbea3c01adc7898c5895b191360f71e94"
+  integrity sha512-uS6cFyJ2WR0F0xfCjmJ3TGwH+no/JOs8cDKNTPMWKWSJdosmHPCk8io4ZrDyz5dKJmSI5X2T5eJqnasawe6wew==
 
 react-debounce-input@^3.2.0:
   version "3.2.2"

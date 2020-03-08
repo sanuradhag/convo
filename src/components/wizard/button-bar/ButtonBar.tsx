@@ -34,7 +34,7 @@ class ButtonBar extends React.Component<Props, State> {
         const nextName = nextStep ? nextStep.name : "Finish";
 
         const hidePrev = currentStep === 1;
-        const hideNext = currentStep === 4;
+        const hideNext = currentStep === 5;
 
         return(
             <div className={"button-bar"}>

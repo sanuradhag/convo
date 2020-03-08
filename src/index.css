@@ -77,8 +77,8 @@ code {
 }
 
 
-input:focus, textarea:focus, select:focus, button:focus{
-  outline: none;
+input:focus, textarea:focus, select:focus, button:focus, div:focus{
+  outline: none ;
 }
 
 /* width */

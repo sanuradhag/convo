@@ -4,8 +4,8 @@ import {
     Switch,
     Route,
 } from 'react-router-dom';
-import LandingPage from './landing-page/LandingPage';
-import Wizard from './wizard/Wizard';
+import LandingPage from './components/landing-page/LandingPage';
+import Wizard from './components/wizard/Wizard';
 
 function App() {
   return (

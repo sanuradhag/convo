@@ -1,18 +1,20 @@
 import React from "react";
-import "./finish.scss";
+import "./generator.scss";
 import ReactJson from 'react-json-view';
 
-import RestAPI from "../../../api/RestAPI"
+import RestAPI from "../../../../api/RestAPI"
+import {InteractionModel} from "../../../../models/models";
 
 interface Props {
-    file: File | Blob | null
+    file: File | Blob | null,
+    onGenerate: Function
 }
 
 interface State {
     loading: boolean,
     message: string,
     success: boolean,
-    interactionModel: any
+    interactionModel: InteractionModel | null
 }
 
 interface Response {
@@ -22,7 +24,7 @@ interface Response {
 
 
 
-class Finish extends React.Component<Props, State> {
+class Generator extends React.Component<Props, State> {
 
     constructor(props: Props) {
         super(props);
@@ -55,6 +57,7 @@ class Finish extends React.Component<Props, State> {
                             interactionModel: response.data,
                             loading: false
                         });
+                        this.props.onGenerate(response.data.interactionModel);
                     }, 2000);
                 }
             })
@@ -83,7 +86,7 @@ class Finish extends React.Component<Props, State> {
     render() {
         const {loading, message, interactionModel} = this.state;
         return(
-            <div className={"finish"}>
+            <div className={"generator"}>
                 <p>{message}</p>
                 {  (!interactionModel && !loading)  &&
                     <div className={"generator"}>
@@ -119,4 +122,4 @@ class Finish extends React.Component<Props, State> {
     }
 }
 
-export default Finish;
+export default Generator;

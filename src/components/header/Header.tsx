@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import logo from '../assets/communication.svg';
-import"./header.scss";
+import logo from '../../assets/communication.svg';
+import "./header.scss";
 
 const Header  =() => {
         const history = useHistory();
