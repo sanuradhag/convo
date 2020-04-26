@@ -31,7 +31,7 @@ class ButtonBar extends React.Component<Props, State> {
         const nextStep = steps.find(st => st.index === currentStep + 1);
 
         const prevName = prevStep ? prevStep.name : "Previous";
-        const nextName = nextStep ? nextStep.name : "Finish";
+        const nextName = nextStep ? nextStep.name : "Download";
 
         const hidePrev = currentStep === 1;
         const hideNext = currentStep === 5;

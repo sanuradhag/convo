@@ -83,7 +83,6 @@ class Wizard extends React.Component<any, State> {
     };
 
     handleGeneration = (interactionModel: any) => {
-        debugger
         this.setState({
             interactionModel
         })
@@ -93,13 +92,17 @@ class Wizard extends React.Component<any, State> {
         const {steps, visitedSteps } = this.state;
         const component =  steps.find((st:Step) => st.index === step);
 
-        debugger
         if(component && step === 4) {
             component.component = <Generator file={this.state.specFile} onGenerate={this.handleGeneration}/>
         }
 
         if(component && step === 5) {
             component.component = <View interactionModel={this.state.interactionModel} />
+        }
+
+        if(step === 6) {
+            this.downloadFile()
+            return;
         }
 
         visitedSteps.push(step);
@@ -111,6 +114,16 @@ class Wizard extends React.Component<any, State> {
             visitedSteps: visited
         });
     };
+
+    downloadFile(){
+
+        const downloadUrl = "http://localhost:5000/api/v1/file-download";
+
+        const response = {
+            file: downloadUrl
+        };
+        window.open(response.file);
+    }
 
     renderComponent() {
         const {steps, currentStep } = this.state;

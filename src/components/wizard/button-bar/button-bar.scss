@@ -5,13 +5,14 @@
   .btn {
     margin-left: 50px;
     margin-right: 50px;
-    width: 250px;
+    min-width: 250px;
     height: 30px;
     color: white;
     border: none;
     border-radius: 15px;
     font-size: 17px;
     font-weight: 700;
+    display: inline-block;
 
     &:hover {
       box-shadow: 0 0 10px 1px #888888;
