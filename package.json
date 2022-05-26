@@ -23,7 +23,7 @@
     "react-scripts": "3.4.0",
     "swagger-model-validator": "^3.0.18",
     "swagger-parser": "^8.0.4",
-    "swagger-ui-react": "^3.25.0",
+    "swagger-ui-react": "^4.1.3",
     "typescript": "~3.7.2"
   },
   "scripts": {
